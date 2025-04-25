@@ -26,8 +26,8 @@ root # mount /dev/nvme0n1p1 /mnt/funtoo/boot
 
 root # hwclock --systohc
 
-root # cd /mnt/funtoo
-root # wget https://metro.funmore.org/next/x86-64bit/generic_64/2025-04-23/gnome-light-workstation-stage3-generic_64-next-2025-04-23.tar
+cd /mnt/funtoo
+wget https://metro.funmore.org/next/x86-64bit/generic_64/2025-04-23/gnome-light-workstation-stage3-generic_64-next-2025-04-23.tar
 
 or links https://metro.funmore.org
 
@@ -59,11 +59,11 @@ root # nano -w /etc/locale.gen
 en_US.UTF-8 UTF-8
 fr_FR.UTF-8 UTF-8
 
-root # locale-gen
+locale-gen
 
-root # eselect locale list
+eselect locale list
 
-eselect locale set 5
+locale set 5
 
 root # nano -w /etc/conf.d/keymaps
 
@@ -71,10 +71,10 @@ root # nano -w /etc/conf.d/keymaps
 
 nano /etc/conf.d/hostname
 
-chroot # mount -o remount,rw /sys/firmware/efi/efivars
-chroot # grub-install --target=x86_64-efi --efi-directory=/boot --bootloader-id="Funtoo Linux [GRUB]" --recheck
+mount -o remount,rw /sys/firmware/efi/efivars
+grub-install --target=x86_64-efi --efi-directory=/boot --bootloader-id="Funtoo Linux [GRUB]" --recheck
 
-chroot # ego boot update
+ego boot update
 
 emerge  sys-kernel/debian-sources sys-apps/busybox 
 ramdisk /tmp/initramfs
@@ -102,11 +102,11 @@ nano /etc/conf.d/xdm
 
 "gdm"
 
-root # rc-update add dbus default
-root # rc-update add elogind default
+rc-update add dbus default
+rc-update add elogind default
 
 reboot
 
 /etc/init.d/xdm start
 
-root # rc-update add xdm default
+rc-update add xdm default
