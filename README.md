@@ -2,38 +2,39 @@
 
 `loadkeys fr`
 
-nmtui
+'nmtui'
 
-lsblk
+'lsblk'
 
-cfdisk /dev/nvme0n1
+'cfdisk /dev/nvme0n1'
 
 1. 1G (EFI System)
 2. 70G+ (Linux File System)
 3. 8G+ (Linux Swap)
 
-lsblk
+'lsblk'
 
-mkfs.fat -F 32 /dev/nvme0n1p1
+'mkfs.fat -F 32 /dev/nvme0n1p1'
 
-mkfs.ext4 /dev/nvme0n1p2
+'mkfs.ext4 /dev/nvme0n1p2'
 
-mkswap /dev/nvme0n1p3
+'mkswap /dev/nvme0n1p3'
 
-swapon /dev/nvme0n1p3
+'swapon /dev/nvme0n1p3'
 
-mkdir -p /mnt/funtoo
+'mkdir -p /mnt/funtoo'
 
-mount /dev/nvme0n1p2 /mnt/funtoo
+'mount /dev/nvme0n1p2 /mnt/funtoo'
 
-mkdir /mnt/funtoo/boot
+'mkdir /mnt/funtoo/boot'
 
-mount /dev/nvme0n1p1 /mnt/funtoo/boot
+'mount /dev/nvme0n1p1 /mnt/funtoo/boot'
 
-hwclock --systohc
+'hwclock --systohc'
 
-cd /mnt/funtoo
-wget https://metro.funmore.org/next/x86-64bit/generic_64/2025-04-23/gnome-light-workstation-stage3-generic_64-next-2025-04-23.tar
+'cd /mnt/funtoo'
+
+'wget https://metro.funmore.org/next/x86-64bit/generic_64/2025-04-23/gnome-light-workstation-stage3-generic_64-next-2025-04-23.tar'
 
 or links https://metro.funmore.org
 
