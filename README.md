@@ -1,6 +1,6 @@
 ## Little Guide to install Funtoo on AMD computers
 
-`code`loadkeys fr`code`
+`loadkeys fr`
 
 nmtui
 
