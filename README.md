@@ -1,1 +1,1 @@
-Test
+A Funtoo Wiki.
