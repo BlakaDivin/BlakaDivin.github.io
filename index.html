@@ -1,0 +1,377 @@
+<!doctype html>
+<html lang="en" dir="ltr" class="docs-wrapper docs-doc-page docs-version-current plugin-docs plugin-id-default docs-doc-id-about-alg">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="generator" content="Docusaurus v2.4.1">
+    <meta http-equiv="content-type" content="text/html;charset=utf-8"/>
+
+    <title data-rh="true">Funtoo's Wiki</title>
+
+    <meta data-rh="true" name="viewport" content="width=device-width,initial-scale=1">
+    <meta data-rh="true" name="description" content="Funtoo Wiki.">
+    <meta data-rh="true" property="og:description" content="A brief wiki about Funtoo.">
+    <meta data-rh="true" name="keywords" content="funtoo,blakadiv">
+    
+    <link rel="search" type="application/opensearchdescription+xml" title="Funtoo's Wiki">
+    <link rel="stylesheet" href="mainstyle.css">
+</head>
+
+    <main class="docMainContainer_gTbr">
+        <div class="container padding-top--md padding-bottom--lg">
+            <div class="row">
+                <div class="col docItemCol_VOVn">
+                    <div class="docItemContainer_Djhp">
+                        <article>
+                            <nav class="theme-doc-breadcrumbs breadcrumbsContainer_Z_bl" aria-label="Breadcrumbs">
+                                <ul class="breadcrumbs" itemscope="" itemtype="https://schema.org/BreadcrumbList">
+
+                                    <li class="breadcrumbs__item"><a aria-label="Home page" class="breadcrumbs__link" href="index.html"><svg viewbox="0 0 24 24" class="breadcrumbHomeIcon_YNFT">
+                                                <path d="M10 19v-5h4v5c0 .55.45 1 1 1h3c.55 0 1-.45 1-1v-7h1.7c.46 0 .68-.57.33-.87L12.67 3.6c-.38-.34-.96-.34-1.34 0l-8.36 7.53c-.34.3-.13.87.33.87H5v7c0 .55.45 1 1 1h3c.55 0 1-.45 1-1z" fill="currentColor"></path>
+                                            </svg></a></li>
+                                    <li itemscope="" itemprop="itemListElement" itemtype="https://schema.org/ListItem" class="breadcrumbs__item breadcrumbs__item--active"><span class="breadcrumbs__link" itemprop="name">Funtoo's Wiki Wiki</span>
+                                        <meta itemprop="position" content="1">
+                                    </li>
+                                </ul>
+                            </nav>
+
+                            <div class="theme-doc-markdown markdown">
+                                <h1>Funtoo's Wiki</h1>
+                                <p>Welcome to the Funtoo's Wiki, you will find helpful stuff here. </p>
+                                <p>This wiki is here to help you with Funtoo.</p>
+                                <div class="theme-admonition theme-admonition-tip alert alert--success admonition_LlT9">
+                                    <div class="admonitionHeading_tbUL"><span class="admonitionIcon_kALy">📢</span>ANNOUCEMENT</div>
+                                    <div class="admonitionContent_S0QG">
+                                        <p>
+                                        The goal of this Wiki is to use Funtoo even after it's transition to hobby mode.<br><br>
+                                        This Wiki will use new UNOFFICIAL repos hosted on github.<br>
+                                        <br>
+                                        Hopefully you will benefit from the informations here and keep enjoying Funtoo for the next years, that is the only goal of this wiki.<br>
+                                       <br>
+                                       BlakaDivin, 26 April 2025, France.
+                                        
+                                        
+                                       
+                                       
+                                            </p>
+                                    </div>
+                                </div>
+
+                                <hr>
+                                <h2 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="update">Update and Upgrade<a href="#update" class="hash-link" aria-label="Direct link to update" title="Direct link to update">​</a></h2>
+                                <p>Considering you already got Funtoo installed, it is now time to update your repos and upgrade your system.<br>
+<br>
+<code>echo 'sync_base_url=https://github.com/funtoo-repo/{repo}' >> /etc/ego.conf</code><br><br>
+<code>echo 'GENTOO_MIRRORS=https://direct-github.funmore.org' >> /etc/portage/make.conf</code><br><br>
+<code>rm -rf /var/git/meta-repo</code><br><br>
+<code>ego sync && emerge -DuavNA @world && emerge --depclean</code><br>
+                                    <hr>
+
+                                <h2 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="install">Installation<a href="#install" class="hash-link" aria-label="Direct link to install" title="Direct link to install">​</a></h2>
+
+                                Here's a small guide (20 Steps) to install Funtoo (26 April 2025)<br>
+                                <br>
+                                
+                                For a French keyboard:
+                                <code>loadkeys fr</code><br>
+
+                                For wifi connection: <code>nmtui</code><br>
+                               <br>
+                                <b>1. Setting up the Disks</b><br>
+                                <br>
+                                <code>lsblk</code><br>
+                                
+                                <code> cfdisk /dev/nvme0n1</code> or <code> cfdisk /dev/sda</code><br><br>
+                                
+                                 <div class="theme-doc-markdown markdown">
+                                                                 <div class="theme-admonition theme-admonition-tip alert alert--success admonition_LlT9">
+                                    <div class="admonitionHeading_tbUL"><span class="admonitionIcon_kALy">📢</span>Disk Setup</div>
+                                    <div class="admonitionContent_S0QG">
+                                 <b>First parition: 1G (EFI System)</b><br>
+                                 <b>Second partition:  70G+ (Linux File System)</b><br>
+                                <b> Third partition: 8G+ (Linux Swap)</b><br>
+                                 </div>
+                                  </div>
+                                   </div>
+                                  <br>
+                                   
+                                   <b>2. Formatting the Disks</b><br>
+                                   <br>
+ <code>lsblk</code><br>
+ <code>mkfs.fat -F 32 /dev/nvme0n1p1</code><br>
+ <code>mkfs.ext4 /dev/nvme0n1p2</code><br>
+ <code>mkswap /dev/nvme0n1p3</code><br>
+ <code>swapon /dev/nvme0n1p3</code><br>
+ <br>
+ 
+ <b>3. Mounting the Disks</b><br>
+                                   <br>
+                                   
+ <code>mkdir -p /mnt/funtoo</code><br>
+ <code>mount /dev/nvme0n1p2 /mnt/funtoo</code><br>
+ <code>mkdir /mnt/funtoo/boot</code><br>
+ <code>mount /dev/nvme0n1p1 /mnt/funtoo/boot</code><br>
+ <br>
+ 
+  <b>4. Synching the clock</b><br>
+ <br>
+  <code>hwclock --systohc</code><br>
+   <br>
+   
+   <b>5. Downloading a gnome stage 3</b><br>
+   <br>
+   <code>cd /mnt/funtoo</code><br>
+   <br>
+  Method 1: <code>wget https://metro.funmore.org/next/x86-64bit/generic_64/2025-04-23/gnome-light-workstation-stage3-generic_64-next-2025-04-23.tar</code><br>
+<br>
+
+Method 2: <code>links https://metro.funmore.org</code><br>
+  <br>
+  
+   <b>6. Unpacking your gnome stage 3</b><br>
+   <br>
+ <code>tar --numeric-owner --xattrs --xattrs-include='*' -xpf gnome*</code><br>
+   <br>
+   
+   <b>7. Time to chroot</b><br>
+   <br>
+    Method 1: <code>fchroot /mnt/funtoo</code><br>
+    <br>
+    Method 2:
+    <code>cd /mnt/funtoo</code><br>
+<code>mount --rbind /proc proc</code><br>
+<code>mount --rbind /sys sys</code><br>
+<code>mount --rbind /dev dev</code><br>
+<code>cp /etc/resolv.conf /mnt/funtoo/etc/</code><br>
+<code>chroot . /bin/su --login</code><br>
+<br>
+
+<b>8. Download the tree</b><br>
+   <br>
+<code>ping www.google.com</code><br>
+<br>
+<code>ego sync</code><br>
+<br>
+if you can't download the tree, update your repos first!<br>
+<br>
+<code>echo 'sync_base_url=https://github.com/funtoo-repo/{repo}' >> /etc/ego.conf</code><br><br>
+<code>echo 'GENTOO_MIRRORS=https://direct-github.funmore.org' >> /etc/portage/make.conf</code><br><br>
+<code>rm -rf /var/git/meta-repo</code><br><br>
+   <code>ego sync</code><br>
+   <br>
+   
+   <b>9. Edit profile</b><br>
+   <br>
+  <code> epro show</code><br>
+  <br>
+<code>epro flavor desktop</code><br>
+<br>
+OPTIONAL: <code>epro subarch amd64-zen2</code><br>
+<br>
+
+<b>10. Update Funtoo</b><br>
+<br>
+<code>emerge -DuavNA @world && emerge --depclean</code><br>
+<br>
+
+<b>11. Create fstab</b><br>
+ <br>
+<code>nano -w /etc/fstab</code><br>
+ <br>
+<div class="theme-doc-markdown markdown">
+                                                                 <div class="theme-admonition theme-admonition-tip alert alert--success admonition_LlT9">
+                                    <div class="admonitionHeading_tbUL"><span class="admonitionIcon_kALy">📢</span>Fstab Setup</div>
+                                    <div class="admonitionContent_S0QG">
+                                <b>/dev/nvme0n1p1&nbsp;&nbsp;&nbsp;&nbsp;     /boot&nbsp;&nbsp;&nbsp;&nbsp;     vfat&nbsp;&nbsp;&nbsp;&nbsp;  noauto,noatime   1 2</b><br>
+                                <b>/dev/nvme0n1p2&nbsp;&nbsp;&nbsp;&nbsp;     /&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;         ext4&nbsp;&nbsp;&nbsp;&nbsp;  noatime          0 1</b><br>
+<b>/dev/nvme0n1p3 &nbsp;&nbsp;&nbsp;&nbsp;    none&nbsp;&nbsp;&nbsp;&nbsp;      swap&nbsp;&nbsp;&nbsp;&nbsp;  sw               0 0</b>
+                                 </div>
+                                  </div>
+                                   </div>
+                          <br>
+                          
+                      <b>12. Setting locales</b><br>   
+                      <br>
+                       
+                        <code>nano -w /etc/locale.gen</code><br>
+<br>
+
+                                 <div class="theme-doc-markdown markdown">
+                                                                 <div class="theme-admonition theme-admonition-tip alert alert--success admonition_LlT9">
+                                    <div class="admonitionHeading_tbUL"><span class="admonitionIcon_kALy">📢</span>Locale Setup</div>
+                                    <div class="admonitionContent_S0QG">
+                                 <b>en_US.UTF-8 UTF-8</b><br>
+                                 <b>fr_FR.UTF-8 UTF-8</b><br>
+                                 </div>
+                                  </div>
+                                   </div>
+                                  <br>
+                                  
+
+<code>locale-gen</code><br>
+<br>
+<code>select locale list</code><br>
+<br>
+EXAMPLE: <code>eselect locale set 5</code><br>
+<br>
+
+<b>13. Setting keymap</b><br>   
+                      <br>
+                      
+<code>nano -w /etc/conf.d/keymaps</code><br>
+<br>
+
+<div class="theme-doc-markdown markdown">
+                                                                 <div class="theme-admonition theme-admonition-tip alert alert--success admonition_LlT9">
+                                    <div class="admonitionHeading_tbUL"><span class="admonitionIcon_kALy">📢</span>French keyboard Setup</div>
+                                    <div class="admonitionContent_S0QG">
+                                 <b>keymap="fr"</b><br>
+                                 </div>
+                                  </div>
+                                   </div>
+                                  <br>
+
+                          <div class="theme-doc-markdown markdown">
+                                                                 <div class="theme-admonition theme-admonition-tip alert alert--success admonition_LlT9">
+                                    <div class="admonitionHeading_tbUL"><span class="admonitionIcon_kALy">📢</span>US keyboard Setup</div>
+                                    <div class="admonitionContent_S0QG">
+                                 <b>keymap="us"</b><br>
+                                 </div>
+                                  </div>
+                                   </div>
+                                  <br>
+                          
+                          <b>14. Setting hostname</b><br>   
+                      <br>
+                      
+                          <code>nano /etc/conf.d/hostname</code><br>
+                          <br>
+                         
+                          <div class="theme-doc-markdown markdown">
+                                                                 <div class="theme-admonition theme-admonition-tip alert alert--success admonition_LlT9">
+                                    <div class="admonitionHeading_tbUL"><span class="admonitionIcon_kALy">📢</span>Hostname Setup</div>
+                                    <div class="admonitionContent_S0QG">
+                                 <b>hostname="funtoo"</b><br>
+                                 </div>
+                                  </div>
+                                   </div>
+                                  <br>
+  
+   <b>15. Setting Grub</b><br>   
+                      <br>
+                      
+<code>mount -o remount,rw /sys/firmware/efi/efivars</code><br>
+<br>
+<code>grub-install --target=x86_64-efi --efi-directory=/boot --bootloader-id="Funtoo Linux [GRUB]" --recheck</code><br>
+<br>
+<code>ego boot update</code><br>
+<br>
+
+ <b>16. Setting Users</b><br>   
+                      <br>
+                      
+<code>passwd</code><br>
+
+<code>useradd -m div</code><br>
+
+<code>usermod -G wheel,audio,video,plugdev,portage div</code><br>
+
+<code>passwd div</code><br>
+<br>
+
+
+ <b>17. Final steps</b><br>   
+                      <br>
+                      
+<code>emerge  sys-kernel/debian-sources sys-apps/busybox</code><br>
+<br>
+<code>ramdisk /tmp/initramfs</code><br>
+<br>
+
+  <div class="theme-doc-markdown markdown">
+                                                                 <div class="theme-admonition theme-admonition-tip alert alert--success admonition_LlT9">
+                                    <div class="admonitionHeading_tbUL"><span class="admonitionIcon_kALy">📢</span>CHECK KERNEL version</div>
+                                    <div class="admonitionContent_S0QG">
+                                <code>emerge -s debian-sources</code><br>
+                                 </div>
+                                  </div>
+                                   </div>
+        <br>
+EXAMPLE: <code>mv /tmp/initramfs /boot/initramfs-debian-sources-x86_64-6.12.20_p1</code><br> 
+<br>
+<code>ego boot</code><br>
+<br>
+
+ <b>18. Leaving the chroot</b><br>   
+                      <br>
+
+<code>exit</code><br>  
+<code>cd /mnt</code><br>  
+<code>umount -lR funtoo</code><br>  
+<code>reboot</code><br>  
+  <br> 
+  
+   <b>19. Configure your new system</b><br>   
+                      <br>
+                      
+<code>su -</code><br>  
+<br>  
+<code>nano /etc/conf.d/xdm</code><br>  
+<br>  
+  <div class="theme-doc-markdown markdown">
+                                                                 <div class="theme-admonition theme-admonition-tip alert alert--success admonition_LlT9">
+                                    <div class="admonitionHeading_tbUL"><span class="admonitionIcon_kALy">📢</span>Display manager setup</div>
+                                    <div class="admonitionContent_S0QG">
+                                DISPLAYMANAGER="gdm"<br>
+                                 </div>
+                                  </div>
+                                   </div>
+        <br>
+        
+        
+<code>rc-update add dbus default</code><br> 
+<code>rc-update add elogind default</code><br> 
+<br>
+<code>reboot</code><br>
+<br>
+
+ <b>20. The end</b><br>   
+                      <br>
+                      
+OPTIONAL: <code>/etc/init.d/xdm start</code><br>
+
+OPTIONAL: <code>rc-update add xdm default</code><br>
+<br>
+
+
+                                <hr>
+                        </article>
+                    </div>
+                </div>
+                <div class="col col--3">
+                    <div class="tableOfContents_bqdL thin-scrollbar theme-doc-toc-desktop">
+                        <ul class="table-of-contents table-of-contents__left-border">
+
+                            <li><a href="#update" class="table-of-contents__link toc-highlight">Update and Upgrade</a>
+                            </li>
+                            <li><a href="#install" class="table-of-contents__link toc-highlight">Installation</a>
+                            </li>
+                            
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <footer class="footer footer--dark">
+        <div class="container container-fluid">
+            <div class="row footer__links">
+
+            </div>
+            <div class="footer__bottom text--center">
+                <div class="footer__copyright">Copyright 2025 @ BlakaDivin.</div>
+            </div>
+        </div>
+    </footer>
+</body>
