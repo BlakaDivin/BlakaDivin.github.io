@@ -431,6 +431,51 @@ After the execution of this ansible playbook you will have 3 running lxd contain
   Playbook link: <code>https://github.com/org-tekeli-borisp/ansible-funtoo</code><br>                                 
                                     <hr>
      
+      <h2 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="metro">Using Metro to build Stages<a href="#metro" class="hash-link" aria-label="Direct link to metro" title="Direct link to metro">​</a></h2>
+
+      <div class="theme-doc-markdown markdown">
+                                                                 <div class="theme-admonition theme-admonition-tip alert alert--success admonition_LlT9">
+                                    <div class="admonitionHeading_tbUL"><span class="admonitionIcon_kALy">📢</span>Metro</div>
+                                    <div class="admonitionContent_S0QG">
+                                   
+                                
+Metro is used to build Stages.<br>
+See very basic usage below.<br>
+                                 </div>
+                                  </div>
+                                   </div>
+                                   <br>
+                                   
+     <code>su -</code> or <code>sudo -i</code><br>
+     <br>
+     <code>cd /root</code><br>
+     <br>
+     <code>git clone https://github.com/funtoo-src/metro</code><br>
+<br>
+     <code>emerge -av dev-python/lxml dev-python/requests</code><br>
+<br>
+
+<code>cp /root/metro/metro.conf /root/.metro</code><br>
+<br>
+
+Then you launch the setup to select your seed:<br>
+<br>
+
+<code>/root/metro/scripts/setup</code><br>
+<br>
+
+Then you can build your own stage file with any subarch and using freshen or full:<br>
+<br>
+
+EXAMPLE 1: <code>export EGO_SYNC_BASE_URL="https://github.com/funtoo-repo/{repo}" && metro/scripts/ezbuild.sh next x86-64bit amd64-zen2 freshen+gnome-light-workstation</code><br>
+
+<br>
+EXAMPLE 2: <code>export EGO_SYNC_BASE_URL="https://github.com/funtoo-repo/{repo}" && metro/scripts/ezbuild.sh next x86-64bit amd64-zen2 full+gnome-light-workstation</code><br>
+
+<br>
+EXAMPLE 3: <code>export EGO_SYNC_BASE_URL="https://github.com/funtoo-repo/{repo}" && metro/scripts/ezbuild.sh next x86-64bit generic_64 freshen+lxd</code>
+                                    <hr>
+                                    
                         </article>
                     </div>
                 </div>
@@ -445,6 +490,8 @@ After the execution of this ansible playbook you will have 3 running lxd contain
                             <li><a href="#stages" class="table-of-contents__link toc-highlight">Links to Stages</a>
                             </li>
                             <li><a href="#bdfl" class="table-of-contents__link toc-highlight">Become your own BDFL</a>
+                            </li>
+                            <li><a href="#metro" class="table-of-contents__link toc-highlight">Using Metro to build Stages</a>
                             </li>
                             
                         </ul>
