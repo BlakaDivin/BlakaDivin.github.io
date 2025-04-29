@@ -476,6 +476,71 @@ EXAMPLE 2: <code>export EGO_SYNC_BASE_URL="https://github.com/funtoo-repo/{repo}
 EXAMPLE 3: <code>export EGO_SYNC_BASE_URL="https://github.com/funtoo-repo/{repo}" && metro/scripts/ezbuild.sh next x86-64bit generic_64 freshen+lxd</code>
                                     <hr>
                                     
+                                    <h2 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="package">Adding Packages<a href="#package" class="hash-link" aria-label="Direct link to package" title="Direct link to package">​</a></h2>
+
+   <div class="theme-doc-markdown markdown">
+                                                                 <div class="theme-admonition theme-admonition-tip alert alert--success admonition_LlT9">
+                                    <div class="admonitionHeading_tbUL"><span class="admonitionIcon_kALy">📢</span>Packages</div>
+                                    <div class="admonitionContent_S0QG">
+                                   
+                                
+We recommend you to use Flatpaks.<br>
+                                 </div>
+                                  </div>
+                                   </div>
+<br>
+  <b>1. Installing Flatpak App</b><br>  
+  <br> 
+  
+<code>ego sync && emerge -av =sys-fs/fuse-2.9.9 flatpak</code><br>
+<br>
+<code>flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo</code><br>
+<br>
+
+
+<code>reboot</code><br>
+<br>
+
+<b>2. Installing Flatpak Packages</b><br>
+<br>
+
+<code>flatpak install flathub org.mozilla.firefox</code><br>
+<br>
+<code>flatpak install flathub org.filezillaproject.Filezilla</code><br>
+<br>
+<code>flatpak install flathub org.gnome.Rhythmbox3</code><br>
+<br>
+<code>flatpak install flathub org.videolan.VLC</code><br>
+<br>
+<code>flatpak install flathub org.libreoffice.LibreOffice</code><br>
+<br>
+
+
+  <div class="theme-doc-markdown markdown">
+                                                                 <div class="theme-admonition theme-admonition-tip alert alert--success admonition_LlT9">
+                                    <div class="admonitionHeading_tbUL"><span class="admonitionIcon_kALy">📢</span>More Flatpaks</div>
+                                    <div class="admonitionContent_S0QG">
+                                   
+                                
+Visit: <code>https://flathub.org/</code>
+                                 </div>
+                                  </div>
+                                   </div>
+                                   <br>
+
+<b>3. Uninstalling Flatpak Packages</b><br>
+<br>
+
+EXAMPLE: <code>flatpak uninstall vlc</code><br>
+<br>
+
+<b>4. Updating Flatpak Packages</b><br>
+<br>
+
+<code>flatpak update</code><br>
+<br>                                   
+                                    <hr>
+                                    
                         </article>
                     </div>
                 </div>
@@ -492,6 +557,8 @@ EXAMPLE 3: <code>export EGO_SYNC_BASE_URL="https://github.com/funtoo-repo/{repo}
                             <li><a href="#bdfl" class="table-of-contents__link toc-highlight">Become your own BDFL</a>
                             </li>
                             <li><a href="#metro" class="table-of-contents__link toc-highlight">Using Metro to build Stages</a>
+                            </li>
+                            <li><a href="#package" class="table-of-contents__link toc-highlight">Adding Packages</a>
                             </li>
                             
                         </ul>
