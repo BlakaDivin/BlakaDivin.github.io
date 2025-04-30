@@ -590,6 +590,324 @@
                             <br>
                             <hr>
 
+                            <h2 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="container">LXD/Setting Containers<a
+                                    href="#container" class="hash-link" aria-label="Direct link to container"
+                                    title="Direct link to container">​</a></h2>
+
+                            <div class="theme-doc-markdown markdown">
+                                <div class="theme-admonition theme-admonition-tip alert alert--success admonition_LlT9">
+                                    <div class="admonitionHeading_tbUL"><span class="admonitionIcon_kALy">📢</span>LXD
+                                    </div>
+                                    <div class="admonitionContent_S0QG">
+                                        LXD is a container "hypervisor" designed to provide an easy set of tools to
+                                        manage Linux containers.<br>
+                                    </div>
+                                </div>
+                            </div>
+                            <br>
+                            <b>Installation:</b><br><br>
+
+                            <code>emerge -a lxd</code>
+                            <br><br>
+                            <code>rc-update add lxd default</code><br><br>
+
+                            <code>gedit /etc/security/limits.conf</code><br><br>
+
+                            <div class="theme-doc-markdown markdown">
+                                <div class="theme-admonition theme-admonition-tip alert alert--success admonition_LlT9">
+                                    <div class="admonitionHeading_tbUL"><span
+                                            class="admonitionIcon_kALy">📢</span>/etc/security/limits.conf
+                                    </div>
+                                    <div class="admonitionContent_S0QG">
+                                        *&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; soft&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                        nofile&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 1048576<br>
+                                        *&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; hard&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                        nofile&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 1048576<br>
+                                        root&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                        soft&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                        nofile&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 1048576<br>
+                                        root&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                        hard&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                        nofile&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 1048576<br>
+                                        *&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; soft&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                        memlock&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; unlimited<br>
+                                        *&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                        hard&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                        memlock&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; unlimited<br>
+                                        # End of file<br>
+                                    </div>
+                                </div>
+                            </div>
+                            <br>
+
+                            <code>gedit /etc/subuid</code>
+                            <br>
+                            <br>
+
+                            <div class="theme-doc-markdown markdown">
+                                <div class="theme-admonition theme-admonition-tip alert alert--success admonition_LlT9">
+                                    <div class="admonitionHeading_tbUL"><span class="admonitionIcon_kALy">📢</span>
+                                        /etc/subuid</div>
+                                    <div class="admonitionContent_S0QG">
+
+
+                                        root:1000000:1000000000
+                                    </div>
+                                </div>
+                            </div>
+                            <br>
+
+                            <code>gedit /etc/subgid</code>
+                            <br>
+                            <br>
+
+                            <div class="theme-doc-markdown markdown">
+                                <div class="theme-admonition theme-admonition-tip alert alert--success admonition_LlT9">
+                                    <div class="admonitionHeading_tbUL"><span class="admonitionIcon_kALy">📢</span>
+                                        /etc/subgid </div>
+                                    <div class="admonitionContent_S0QG">
+
+
+                                        root:1000000:1000000000
+                                    </div>
+                                </div>
+                            </div>
+                            <br>
+
+                            <b>Initialization:</b><br><br>
+                            <code>/etc/init.d/lxd start</code><br><br>
+
+                            <code>lxd init</code><br><br>
+
+                            <div class="theme-doc-markdown markdown">
+                                <div class="theme-admonition theme-admonition-tip alert alert--success admonition_LlT9">
+                                    <div class="admonitionHeading_tbUL"><span class="admonitionIcon_kALy">📢</span> LXD
+                                        Settings </div>
+                                    <div class="admonitionContent_S0QG">
+
+
+                                        Would you like to use LXD clustering? (yes/no) [default=no]: ↵<br>
+                                        Do you want to configure a new storage pool? (yes/no) [default=yes]: ↵<br>
+                                        Name of the new storage pool [default=default]: ↵<br>
+                                        Name of the storage backend to use (btrfs, dir, lvm) [default=btrfs]: dir ↵<br>
+                                        Would you like to connect to a MAAS server? (yes/no) [default=no]: ↵<br>
+                                        Would you like to create a new local network bridge? (yes/no) [default=yes]:
+                                        ↵<br>
+                                        What should the new bridge be called? [default=lxdbr0]: ↵<br>
+                                        What IPv4 address should be used? (CIDR subnet notation, “auto” or “none”)
+                                        [default=auto]: ↵<br>
+                                        What IPv6 address should be used? (CIDR subnet notation, “auto” or “none”)
+                                        [default=auto]: none ↵<br>
+                                        Would you like LXD to be available over the network? (yes/no) [default=no]:
+                                        ↵<br>
+                                        Would you like stale cached images to be updated automatically? (yes/no)
+                                        [default=yes] ↵<br>
+                                        Would you like a YAML "lxd init" preseed to be printed? (yes/no) [default=no]:
+                                        ↵<br>
+                                    </div>
+                                </div>
+                            </div>
+                            <br>
+
+                            <b>Create your first Container:</b><br><br>
+
+                            <code>cd /</code><br><br>
+                            <code>wget https://github.com/funtoo-stages/generic_64/releases/download/2025-04-23/lxd-generic_64-next-2025-04-23.tar.xz</code><br><br>
+
+                            <code>lxc image import lxd-generic_64-next-2025-04-23.tar.xz --alias funtoo</code><br><br>
+
+                            <code>lxc launch funtoo YourContainerName</code><br><br>
+
+                            <code>lxc list</code><br><br>
+
+                            <b>Enter your Container:</b><br><br>
+                            <code>lxc exec YourContainerName -- /bin/bash</code><br><br>
+
+
+
+                            <b>Delete container if needed:</b><br><br>
+                            <code>lxc stop YourContainerName</code><br><br>
+                            <code>lxc delete YourContainerName</code><br><br>
+
+                            <b>Delete image if needed:</b><br><br>
+                            <code>lxc image delete funtoo</code><br>
+                            <br>
+
+
+                            <h2 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="laptop">LXD/Laptop Network Setup<a
+                                    href="#laptop" class="hash-link" aria-label="Direct link to laptop"
+                                    title="Direct link to laptop">​</a></h2>
+
+
+                            <div class="theme-doc-markdown markdown">
+                                <div class="theme-admonition theme-admonition-tip alert alert--success admonition_LlT9">
+                                    <div class="admonitionHeading_tbUL"><span class="admonitionIcon_kALy">📢</span>
+                                        WARNING!</div>
+                                    <div class="admonitionContent_S0QG">
+
+                                        Special setup is required on a laptop when you are using WiFi. Without special
+                                        steps, LXD will cause a conflict with the default route on your system which is
+                                        managed by NetworkManager.
+                                    </div>
+                                </div>
+                            </div>
+                            <br>
+
+
+                            <b>Create the following file on your laptop:</b><br><br>
+
+                            <code>gedit /etc/conf.d/netif.brwan</code><br><br>
+
+                            <div class="theme-doc-markdown markdown">
+                                <div class="theme-admonition theme-admonition-tip alert alert--success admonition_LlT9">
+                                    <div class="admonitionHeading_tbUL"><span class="admonitionIcon_kALy">📢</span>
+                                        /etc/conf.d/netif.brwan</div>
+                                    <div class="admonitionContent_S0QG">
+
+                                        template="bridge"<br>
+                                        ipaddrs="10.0.30.1/24"<br>
+                                    </div>
+                                </div>
+                            </div>
+                            <br>
+
+                            <b>Now, let's enable this bridge:</b><br><br>
+
+                            <code>cd /etc/init.d</code><br><br>
+                            <code>ln -s netif.tmpl netif.brwan</code><br><br>
+                            <code>rc-update add netif.brwan default</code><br><br>
+                            <code>reboot</code><br><br>
+
+                            <b>New Bridge In, Old Bridge Out:</b><br><br>
+
+                            <code>/etc/init.d/lxd restart</code><br><br>
+
+                            <code>lxc network list</code><br><br>
+
+                            <code>lxc profile edit default</code><br><br>
+
+
+                            <b>Remember that this is YAML which expects indents to consist of two spaces -- not tabs:
+                            </b><br><br>
+
+                            <div class="theme-doc-markdown markdown">
+                                <div class="theme-admonition theme-admonition-tip alert alert--success admonition_LlT9">
+                                    <div class="admonitionHeading_tbUL"><span class="admonitionIcon_kALy">📢</span>
+                                        Edit the file</div>
+                                    <div class="admonitionContent_S0QG">
+
+                                        eth0:<br>
+                                        name:&nbsp; eth0<br>
+                                        nictype:&nbsp; bridged<br>
+                                        parent:&nbsp; brwan<br>
+                                        type:&nbsp; nic<br>
+
+                                    </div>
+                                </div>
+                            </div>
+                            <br>
+
+                            <code>lxc network delete lxdbr0</code><br><br>
+
+                            <b>Enter a container:</b><br><br>
+
+                            <code>lxc exec YourContainerName -- /bin/bash</code><br><br>
+
+                            <code>cd /etc/conf.d</code><br><br>
+                            <code>nano netif.eth0</code><br><br>
+
+                            <div class="theme-doc-markdown markdown">
+                                <div class="theme-admonition theme-admonition-tip alert alert--success admonition_LlT9">
+                                    <div class="admonitionHeading_tbUL"><span class="admonitionIcon_kALy">📢</span>
+                                        /etc/conf.d/netif.eth0</div>
+                                    <div class="admonitionContent_S0QG">
+
+                                        template='interface'<br>
+                                        ipaddrs='10.0.30.2/24'<br>
+                                        gateway='10.0.30.1'<br>
+                                        nameservers='1.1.1.1 1.0.0.1'<br>
+
+                                    </div>
+                                </div>
+                            </div>
+                            <br>
+
+                            <b>We are setting the container's IP address to 10.0.30.2</b><br><br>
+
+                            <b>Now, let's start this network:</b><br><br>
+
+                            <code>cd /etc/init.d</code><br>
+                            <code>ln -s netif.tmpl netif.eth0</code><br>
+                            <code>rc-update add netif.eth0 default</code><br>
+                            <code>exit</code><br>
+                            <code>lxc restart YourContainerName</code><br>
+                            <code>lxc list</code><br><br>
+
+                            <b>Enter your container and try Ping:</b><br><br>
+
+                            <code>lxc exec YourContainerName -- /bin/bash</code><br>
+                            <code>ping 10.0.30.1</code><br><br>
+
+                            <code>exit</code><br><br>
+
+                            <b>We'll now set up IP Masquerading. This is done on the host:</b><br><br>
+
+                            <code>gedit /etc/local.d/masquerade.start</code>
+                            <br><br>
+
+                            (Below, I am using wlan0 below, because this is the interface on my laptop)<br><br>
+
+                            <div class="theme-doc-markdown markdown">
+                                <div class="theme-admonition theme-admonition-tip alert alert--success admonition_LlT9">
+                                    <div class="admonitionHeading_tbUL"><span class="admonitionIcon_kALy">📢</span>
+                                        /etc/local.d/masquerade.start</div>
+                                    <div class="admonitionContent_S0QG">
+
+                                        /sbin/iptables -t nat -A POSTROUTING -o wlan0 -j MASQUERADE<br>
+                                        echo 1 > /proc/sys/net/ipv4/ip_forward<br>
+
+                                    </div>
+                                </div>
+                            </div>
+                            <br>
+
+                            <b>Make it executable -- and run it just this once. It will get automatically run when your
+                                system starts in the future:</b><br><br>
+
+                            <code>chmod +x masquerade.start</code><br><br>
+                            <code>./masquerade.start</code><br><br>
+
+
+                            <b>Now you can enter your container and ping things on the internet:</b><br><br>
+
+                            <code>lxc exec YourContainerName -- /bin/bash</code><br><br>
+                            <code>ping www.yahoo.com</code><br><br>
+
+                            <b>Add DHCP Daemon:</b><br><br>
+
+                            <code>emerge dnsmasq</code><br><br>
+
+                            <code>gedit /etc/dnsmasq.conf</code><br><br>
+
+
+                            <div class="theme-doc-markdown markdown">
+                                <div class="theme-admonition theme-admonition-tip alert alert--success admonition_LlT9">
+                                    <div class="admonitionHeading_tbUL"><span class="admonitionIcon_kALy">📢</span>
+                                        /etc/dnsmasq.conf </div>
+                                    <div class="admonitionContent_S0QG">
+
+                                        interface=brwan<br>
+                                        dhcp-range=10.0.30.2,10.0.30.254,12h<br>
+
+                                    </div>
+                                </div>
+                            </div>
+                            <br>
+                            <code>rc-update add dnsmasq default</code><br><br>
+                            <code>reboot</code><br><br>
+                            <hr>
+
+
                     </article>
                 </div>
             </div>
@@ -609,6 +927,11 @@
                                 Stages</a>
                         </li>
                         <li><a href="#package" class="table-of-contents__link toc-highlight">Adding Packages</a>
+                        </li>
+                        <li><a href="#container" class="table-of-contents__link toc-highlight">LXD/Setting
+                                Containers</a>
+                        </li>
+                        <li><a href="#laptop" class="table-of-contents__link toc-highlight">LXD/Laptop Network</a>
                         </li>
 
                     </ul>
